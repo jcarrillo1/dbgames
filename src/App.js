@@ -1,21 +1,18 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+import BaseLayout from './views/BaseLayout';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+const Placeholder = (name) => () => <div>Testing {name}</div>
+
+const App = () => (
+  <Switch>
+    <Route path="/admin/login" component={Placeholder('Admin login')} />
+    <Route path="/admin" component={Placeholder('Admin Dashboard')} />
+    <Route path="/employee/login" component={Placeholder('Employee Login')} />
+    <Route path="/employee" component={Placeholder('Employee Dashboard')} />
+    <Route component={BaseLayout} />
+  </Switch>
+);
 
 export default App;
