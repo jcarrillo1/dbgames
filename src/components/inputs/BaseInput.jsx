@@ -12,7 +12,7 @@ const BaseInput = (field) => (
       {field.label}
     </Col>
     <Col sm={7}>
-      <FormControl type={field.type} {...field.input} />
+      <FormControl type={field.type} {...field.input} readOnly={field.readOnly} />
     </Col>
   </FormGroup>
 );

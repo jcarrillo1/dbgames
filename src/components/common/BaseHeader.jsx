@@ -16,7 +16,7 @@ const BaseHeader = () => (
   <div className="container">
   <Navbar.Header>
     <Navbar.Brand>
-      <a href="#">React-Bootstrap</a>
+      DBGames
     </Navbar.Brand>
     <Navbar.Toggle />
   </Navbar.Header>

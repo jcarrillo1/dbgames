@@ -1,11 +1,9 @@
 import React from 'react';
-import { Field, reduxForm, FieldArray } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import { Form, FormGroup, Col, Button } from 'react-bootstrap';
 import BaseInput from '../inputs/BaseInput';
-import AddProducts from './AddProducts';
 
-
-const ProductEntry  = (props) => (
+const EditProduct  = (props) => (
   <Form horizontal onSubmit={props.handleSubmit(props.onSubmit)}>
     <Field
       name="title"
@@ -26,6 +24,24 @@ const ProductEntry  = (props) => (
       component={BaseInput}
     />
     <Field
+      name="genre"
+      label="Genre"
+      type="text"
+      component={BaseInput}
+    />
+    <Field
+      name="subgenre"
+      label="Subgenre"
+      type="text"
+      component={BaseInput}
+    />
+    <Field
+      name="esrb"
+      label="ESRB"
+      type="text"
+      component={BaseInput}
+    />
+    <Field
       name="developer"
       label="Developer"
       type="text"
@@ -38,28 +54,40 @@ const ProductEntry  = (props) => (
       component={BaseInput}
     />
     <Field
-      name="esrb"
-      label="ESRB"
-      type="text"
-      component={BaseInput}
-    />
-    <Field
-      name="genre"
-      label="Genre"
-      type="text"
-      component={BaseInput}
-    />
-    <Field
       name="subgenre"
       label="Subgenre"
       type="text"
       component={BaseInput}
     />
-    <FieldArray name="products" component={AddProducts}/>
+    <Field
+      name="name"
+      label="Platform"
+      type="text"
+      component={BaseInput}
+      readOnly
+    />
+    <Field
+      name="image"
+      label="Image"
+      type="text"
+      component={BaseInput}
+    />
+    <Field
+      name="price"
+      label="Price"
+      type="number"
+      component={BaseInput}
+    />
+    <Field
+      name="quantity"
+      label="Quantity"
+      type="number"
+      component={BaseInput}
+    />
     <FormGroup>
       <Col smOffset={3} sm={7}>
         <Button type="submit">
-          Add Products
+          Update
         </Button>
       </Col>
     </FormGroup>
@@ -67,5 +95,5 @@ const ProductEntry  = (props) => (
 );
 
 export default reduxForm({
-  form: 'productEntry',
-})(ProductEntry);
+  form: 'editProduct',
+})(EditProduct);

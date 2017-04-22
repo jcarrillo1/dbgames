@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, FieldArray, reduxForm } from 'redux-form';
+import { Field } from 'redux-form';
 import { FormGroup, Row, Col, Button } from 'react-bootstrap';
 import BaseInput from '../inputs/BaseInput';
 
