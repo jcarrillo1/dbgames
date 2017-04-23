@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import BaseHeader from '../components/common/BaseHeader';
+import BaseHeader from '../components/headers/BaseHeader';
 import AddProductPage from '../containers/AddProductPage';
 
 const BaseLayout = () => (
