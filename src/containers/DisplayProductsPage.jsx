@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Spinner from 'react-spinkit';
 import { Row } from 'react-bootstrap';
+import api from '../api';
 import GameDisplayPanel from '../components/admin/GameDisplayPanel';
+import GameFilterForm from '../components/forms/GameFilter';
 
 class DisplayProductsPage extends Component {
   state = {
@@ -10,7 +12,7 @@ class DisplayProductsPage extends Component {
     games: [],
   }
   componentDidMount() {
-    axios.get('http://localhost:8080/api/games')
+    api.getProducts()
       .then(result => result.data)
       .then(data => {
         const { games } = data;
@@ -21,6 +23,23 @@ class DisplayProductsPage extends Component {
       })
       .catch(error => console.log(error));
   }
+  onSubmit = (data) => {
+    console.log(data);
+    this.setState({
+      loading: true,
+      games: [],
+    })
+    api.getProducts(data)
+      .then(result => result.data)
+      .then(data => {
+        const { games } = data;
+        this.setState({
+          games: games || [],
+          loading: false,
+        })
+      })
+
+  }
   render() {
     const { loading, games } = this.state;
     if (loading) {
@@ -29,6 +48,10 @@ class DisplayProductsPage extends Component {
     const GamePanels = games.map((game, index) => <GameDisplayPanel game={game} key={index} />)
     return (
       <div>
+        <Row>
+          <GameFilterForm onSubmit={this.onSubmit} />
+        </Row>
+        <br />
         <Row>
           {GamePanels}
         </Row>

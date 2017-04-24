@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter, NavLink } from 'react-router-dom';
 import { logout } from '../../redux/auth';
 
-const AdminHeader = ({ dispatch }) => (
+const AdminHeader = ({ dispatch, history }) => (
 <Navbar collapseOnSelect>
   <div className="container">
   <Navbar.Header>
@@ -15,7 +15,7 @@ const AdminHeader = ({ dispatch }) => (
   </Navbar.Header>
   <Navbar.Collapse>
     <Nav>
-      <NavItem><NavLink to="/admin">BROWSE USERS</NavLink></NavItem>
+      <NavItem onClick={() => history.push('/admin')}>BROWSE USERS</NavItem>
     </Nav>
     <Nav pullRight>
       <NavItem onClick={() => dispatch(logout())}>LOGOUT</NavItem>

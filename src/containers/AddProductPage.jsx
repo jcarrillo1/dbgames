@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Col } from 'react-bootstrap';
-import axios from 'axios';
 import api from '../api';
 import { blobToImage } from '../utilities';
 import ProductEntry from '../components/forms/ProductEntry';
@@ -21,7 +20,7 @@ class AddProductPage extends Component {
           product.image = result.secure_url;
         }
       }
-      axios.post('http://localhost:8080/api/games', values)
+      api.addProducts(values)
         .then(result => result.data)
         .then((data) => {
           console.log(data);

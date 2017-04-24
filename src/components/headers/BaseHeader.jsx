@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { withRouter, NavLink } from 'react-router-dom';
 import { logout } from '../../redux/auth';
 
-const BaseHeader = ({ dispatch, authenticated }) => (
+const BaseHeader = ({ dispatch, authenticated, history }) => (
 <Navbar collapseOnSelect>
   <div className="container">
   <Navbar.Header>
@@ -19,12 +19,10 @@ const BaseHeader = ({ dispatch, authenticated }) => (
   </Navbar.Header>
   <Navbar.Collapse>
     <Nav>
-      <NavItem><NavLink to="/platforms/ps4">PS4</NavLink></NavItem>
-      <NavItem><NavLink to="/platforms/xboxone">XBOX ONE</NavLink></NavItem>
-      <NavItem><NavLink to="/platforms/switch">SWITCH</NavLink></NavItem>
-      <NavItem><NavLink to="/platforms/pc">PC</NavLink></NavItem>
-
-
+      <NavItem onClick={() => history.push('/platforms/ps4')}>PS4</NavItem>
+      <NavItem onClick={() => history.push('/platforms/xbox-one')}>XBOX ONE</NavItem>
+      <NavItem onClick={() => history.push('/platforms/switch')}>SWITCH</NavItem>
+      <NavItem onClick={() => history.push('/platforms/pc')}>PC</NavItem>
     </Nav>
 
     {authenticated
@@ -32,8 +30,8 @@ const BaseHeader = ({ dispatch, authenticated }) => (
           <NavItem onClick={() => dispatch(logout())}>LOGOUT</NavItem>
         </Nav>
       : (<Nav pullRight>
-          <NavItem><NavLink to="/login">Login</NavLink></NavItem>
-          <NavItem><NavLink to="/signup">SignUp</NavLink></NavItem>
+          <NavItem onClick={() => history.push('/login')}>Login</NavItem>
+          <NavItem onClick={() => history.push('/signup')}>Sign Up</NavItem>
         </Nav>)
     }
   </Navbar.Collapse>

@@ -8,10 +8,10 @@ import {
 
 const BaseInput = (field) => (
   <FormGroup controlId={field.input.name}>
-    <Col componentClass={ControlLabel} sm={3}>
+    <Col componentClass={ControlLabel} sm={field.labelSize || 3}>
       {field.label}
     </Col>
-    <Col sm={7}>
+    <Col sm={field.inputSize || 7}>
       <FormControl type={field.type} {...field.input} readOnly={field.readOnly} />
     </Col>
   </FormGroup>

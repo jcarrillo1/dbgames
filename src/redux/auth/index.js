@@ -98,10 +98,10 @@ export function signup(info) {
   }
 }
 
-export function getUser() {
+export function getUserInfo() {
   return (dispatch, getState, api) => {
     dispatch(authRequest());
-    api.getUser()
+    api.getUserInfo()
       .then(result => result.data)
       .then(data => dispatch(authSuccess(data)))
       .catch((error) => {

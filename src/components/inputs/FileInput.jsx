@@ -10,13 +10,13 @@ class FileInput extends Component {
   }
 
   render() {
-    const { input, label } = this.props;
+    const { labelSize, inputSize, input, label } = this.props;
     return (
       <FormGroup controlId={input.name}>
-        <Col componentClass={ControlLabel} sm={3}>
+        <Col componentClass={ControlLabel} sm={labelSize || 3}>
           {label}
         </Col>
-        <Col sm={7}>
+        <Col sm={inputSize || 7}>
           <Dropzone className="dropzone-upload" onDrop={this.onChange}>
             {input.value && input.value.preview ?
               <img

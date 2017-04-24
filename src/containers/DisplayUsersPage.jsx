@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import Spinner from 'react-spinkit';
-import { Table } from 'react-bootstrap';
+import { Table, Row } from 'react-bootstrap';
+import api from '../api';
+import UsersFilterForm from '../components/forms/UsersFilter';
 import UsersTableRow from '../components/admin/UsersTableRow';
+
 class DisplayUsersPage extends Component {
   state = {
     loading: true,
     users: [],
   }
   componentDidMount() {
-    axios.get('http://localhost:8080/api/users')
+    api.getUsers()
       .then(result => result.data)
       .then(data => {
         const { users } = data;
@@ -20,13 +22,32 @@ class DisplayUsersPage extends Component {
       })
       .catch(error => console.log(error));
   }
+  onSubmit = (data) => {
+    console.log('FILTERING USERS', data);
+    this.setState({ loading: true, users: [] })
+    api.getUsers(data)
+      .then(result => result.data)
+      .then(data => {
+        const { users } = data;
+        this.setState({
+          users: users || [],
+          loading: false,
+        })
+      })
+  }
   render() {
     const { loading, users } = this.state;
     if (loading) {
       return <Spinner spinnerName="three-bounce" />;
     }
+    console.log(users);
     const UsersRows = users.map((user, index) => <UsersTableRow user={user} key={index} />)
     return (
+      <div>
+        <Row>
+      <UsersFilterForm onSubmit={this.onSubmit} />
+    </Row>
+    <br />
       <Table responsive>
         <thead>
           <tr>
@@ -41,6 +62,7 @@ class DisplayUsersPage extends Component {
           {UsersRows}
         </tbody>
       </Table>
+    </div>
     );
   }
 }

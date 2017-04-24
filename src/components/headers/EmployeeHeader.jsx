@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { withRouter, NavLink } from 'react-router-dom';
 import { logout } from '../../redux/auth';
 
-const EmployeeHeader = ({ dispatch }) => (
+const EmployeeHeader = ({ dispatch, history }) => (
 <Navbar collapseOnSelect>
   <div className="container">
   <Navbar.Header>
@@ -19,8 +19,8 @@ const EmployeeHeader = ({ dispatch }) => (
   </Navbar.Header>
   <Navbar.Collapse>
     <Nav>
-      <NavItem><NavLink to="/employee">BROWSE GAMES</NavLink></NavItem>
-      <NavItem><NavLink to="/employee/games/add">ADD GAMES</NavLink></NavItem>
+      <NavItem onClick={() => history.push('/employee')}>BROWSE GAMES</NavItem>
+      <NavItem onClick={() => history.push('/employee/games/add')}>ADD GAMES</NavItem>
     </Nav>
     <Nav pullRight>
       <NavItem onClick={() => dispatch(logout())}>LOGOUT</NavItem>

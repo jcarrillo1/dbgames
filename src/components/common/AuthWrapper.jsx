@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Spinner from 'react-spinkit';
-import { getUser } from '../../redux/auth';
+import { getUserInfo } from '../../redux/auth';
 
 function AuthWrapper(AuthenticatedComponent, roles, redirectPath) {
   class AuthenticatedRoute extends Component {
@@ -25,7 +25,7 @@ function AuthWrapper(AuthenticatedComponent, roles, redirectPath) {
     componentWillMount() {
       const { authenticated, user, dispatch } = this.props;
       if (authenticated && (!user || Object.keys(user).length < 0)) {
-        dispatch(getUser());
+        dispatch(getUserInfo());
       }
     }
 
