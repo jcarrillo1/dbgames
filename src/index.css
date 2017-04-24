@@ -8,3 +8,34 @@ a {
   color: inherit;
   text-decoration: none !important;
 }
+
+.dropzone-upload {
+  max-width:190px !important;
+  border-width: 2px;
+  border-color: rgb(102, 102, 102);
+  border-style: dashed;
+  border-radius: 5px;
+}
+
+.dropzone-image {
+  max-width: 185px !important;
+}
+
+.game-item{
+  text-align: center;
+}
+
+.game-title {
+  font-size: 18px;
+  color: blue;
+  min-height:30px;
+}
+
+.game-image {
+  max-height: 240px;
+}
+
+.game-price {
+  font-size: 22px;
+  margin: auto;
+}

@@ -3,13 +3,12 @@ import { NavLink } from 'react-router-dom';
 
 const GameDisplayPanel = ({ game }) => (
   <NavLink to={`/employee/games/${game.product_id}`} >
-    <div className="panel panel-primary">
-      <div className="panel-heading">
-        <h3 className="panel-title">{game.title}</h3>
+    <div className="game-item col-sm-3">
+      <img className="game-image" src={game.image} alt="" />
+      <div className="game-title">
+        {game.title}
       </div>
-      <div className="panel-body">
-        {game.description}
-      </div>
+      <p><span className="game-price">${game.price}</span></p>
     </div>
   </NavLink>
 )

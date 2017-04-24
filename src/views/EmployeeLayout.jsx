@@ -6,8 +6,6 @@ import EditProductPage from '../containers/EditProductPage';
 import EmployeeHeader from '../components/headers/EmployeeHeader';
 import Mismatch from '../components/common/Mismatch';
 
-const Test = () => <div>Test</div>
-
 const EmployeeLayout = ({ match }) => (
   <div>
     <EmployeeHeader />

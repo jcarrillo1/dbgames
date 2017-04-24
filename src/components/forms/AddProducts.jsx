@@ -2,6 +2,7 @@ import React from 'react';
 import { Field } from 'redux-form';
 import { FormGroup, Row, Col, Button } from 'react-bootstrap';
 import BaseInput from '../inputs/BaseInput';
+import FileInput from '../inputs/FileInput';
 
 const AddProducts = ({
   fields,
@@ -45,8 +46,7 @@ const AddProducts = ({
         />
         <Field
           name={`${product}.image`}
-          type="text"
-          component={BaseInput}
+          component={FileInput}
           label="Image"
         />
         <Field

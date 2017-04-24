@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Spinner from 'react-spinkit';
 import moment from 'moment';
+import api from '../api';
+import { blobToImage } from '../utilities';
 import EditProductForm from '../components/forms/EditProduct';
 
 class EditProductPage extends Component {
   state = {
     loading: true,
-    game: {},
+    product: {},
   }
   componentDidMount() {
     axios.get(`http://localhost:8080/api/games/${this.props.match.params.id}`)
@@ -25,10 +27,19 @@ class EditProductPage extends Component {
       })
       .catch(error => console.log(error));
   }
-  onSubmit = (data) => {
+  onSubmit = async (data) => {
+    const { product } = this.state;
+    if (product.image && data.image && data.image !== product.image) {
+      const convertedImage = await blobToImage(data.image);
+      let result = await api.uploadImage(convertedImage);
+      data.image = result.secure_url;
+    }
     axios.patch(`http://localhost:8080/api/games/${this.props.match.params.id}`, data)
       .then(result => result.data)
-      .then(data => console.log(data))
+      .then(data => {
+        console.log(data);
+        this.props.history.push("/employee");
+      })
       .catch(error => console.log(error));
   }
   render() {

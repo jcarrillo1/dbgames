@@ -2,6 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Form, FormGroup, Col, Button } from 'react-bootstrap';
 import BaseInput from '../inputs/BaseInput';
+import FileInput from '../inputs/FileInput';
 
 const EditProduct  = (props) => (
   <Form horizontal onSubmit={props.handleSubmit(props.onSubmit)}>
@@ -70,7 +71,7 @@ const EditProduct  = (props) => (
       name="image"
       label="Image"
       type="text"
-      component={BaseInput}
+      component={FileInput}
     />
     <Field
       name="price"

@@ -3,18 +3,12 @@ import {
   Nav,
   Navbar,
   NavItem,
-  MenuItem,
-  NavDropdown,
-  FormGroup,
-  FormControl,
-  InputGroup,
-  Button
 } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { withRouter, NavLink } from 'react-router-dom';
 import { logout } from '../../redux/auth';
 
-const BaseHeader = ({ dispatch }) => (
+const BaseHeader = ({ dispatch, authenticated }) => (
 <Navbar collapseOnSelect>
   <div className="container">
   <Navbar.Header>
@@ -32,12 +26,23 @@ const BaseHeader = ({ dispatch }) => (
 
 
     </Nav>
-    <Nav pullRight>
-      <NavItem onClick={() => dispatch(logout())}>LOGOUT</NavItem>
-    </Nav>
+
+    {authenticated
+      ? <Nav pullRight>
+          <NavItem onClick={() => dispatch(logout())}>LOGOUT</NavItem>
+        </Nav>
+      : (<Nav pullRight>
+          <NavItem><NavLink to="/login">Login</NavLink></NavItem>
+          <NavItem><NavLink to="/signup">SignUp</NavLink></NavItem>
+        </Nav>)
+    }
   </Navbar.Collapse>
   </div>
 </Navbar>
 );
 
-export default connect()(withRouter(BaseHeader));
+const mapStateToProps = state => ({
+  ...state.auth,
+});
+
+export default connect(mapStateToProps)(withRouter(BaseHeader));

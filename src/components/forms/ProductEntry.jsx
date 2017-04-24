@@ -58,7 +58,7 @@ const ProductEntry  = (props) => (
     <FieldArray name="products" component={AddProducts}/>
     <FormGroup>
       <Col smOffset={3} sm={7}>
-        <Button type="submit">
+        <Button type="submit" disabled={props.sending}>
           Add Products
         </Button>
       </Col>

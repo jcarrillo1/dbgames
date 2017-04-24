@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Spinner from 'react-spinkit';
+import { Row } from 'react-bootstrap';
 import GameDisplayPanel from '../components/admin/GameDisplayPanel';
 
 class DisplayProductsPage extends Component {
@@ -28,7 +29,9 @@ class DisplayProductsPage extends Component {
     const GamePanels = games.map((game, index) => <GameDisplayPanel game={game} key={index} />)
     return (
       <div>
-        {GamePanels}
+        <Row>
+          {GamePanels}
+        </Row>
       </div>
     );
   }

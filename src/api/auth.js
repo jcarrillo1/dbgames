@@ -4,6 +4,10 @@ function login(credentials) {
   return axios.post(`${process.env.REACT_APP_API_URL}/api/auth/login`, credentials);
 }
 
+function signup(info) {
+  return axios.post(`${process.env.REACT_APP_API_URL}/api/auth/signup`, info);
+}
+
 function getUser() {
   const config = {
     headers: {
@@ -13,4 +17,4 @@ function getUser() {
   return axios.get(`${process.env.REACT_APP_API_URL}/api/auth`, config);
 }
 
-export default { login, getUser };
+export default { login, signup, getUser };

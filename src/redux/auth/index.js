@@ -81,6 +81,23 @@ export function login(credentials, roles) {
   };
 }
 
+export function signup(info) {
+  return (dispatch, getState, api) => {
+    dispatch(authRequest())
+    api.signup(info)
+      .then(results => results.data)
+      .then((data) => {
+        if (!data.user) {
+          dispatch(authFailure({ message: 'Unauthorized.' }));
+          return;
+        }
+        localStorage.setItem('id_token', data.token);
+        dispatch(authSuccess(data));
+      })
+      .catch(error => dispatch(authFailure(error.response.data)));
+  }
+}
+
 export function getUser() {
   return (dispatch, getState, api) => {
     dispatch(authRequest());
