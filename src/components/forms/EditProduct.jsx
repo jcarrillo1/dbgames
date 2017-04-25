@@ -98,4 +98,5 @@ const EditProduct  = (props) => (
 
 export default reduxForm({
   form: 'editProduct',
+  validate,
 })(EditProduct);

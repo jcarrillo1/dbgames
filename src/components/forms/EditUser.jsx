@@ -4,6 +4,16 @@ import { Form, FormGroup, Col, Button } from 'react-bootstrap';
 import BaseInput from '../inputs/BaseInput';
 import SelectInput from '../inputs/SelectInput';
 
+const validate = values => {
+  const errors = {}
+  if (!values.first_name) {
+    errors.first_name = 'Required';
+  }
+  if (!values.last_name) {
+    errors.last_name = 'Required';
+  }
+  return errors
+}
 const EditUser  = (props) => (
   <Form horizontal onSubmit={props.handleSubmit(props.onSubmit)}>
     <Field

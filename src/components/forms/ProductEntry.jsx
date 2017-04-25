@@ -5,6 +5,19 @@ import BaseInput from '../inputs/BaseInput';
 import TextAreaInput from '../inputs/TextAreaInput';
 import AddProducts from './AddProducts';
 
+const validate = values => {
+  const errors = {}
+  if (!values.title) {
+    errors.title = 'Required';
+  }
+  if (!values.description) {
+    errors.description = 'Required';
+  }
+  if (!values.release_date) {
+    errors.release_date = 'Required';
+  }
+  return errors
+}
 
 const ProductEntry  = (props) => (
   <Form horizontal onSubmit={props.handleSubmit(props.onSubmit)}>
@@ -69,4 +82,5 @@ const ProductEntry  = (props) => (
 
 export default reduxForm({
   form: 'productEntry',
+  validate,
 })(ProductEntry);
