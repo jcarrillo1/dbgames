@@ -7,6 +7,13 @@ import SelectInput from '../inputs/SelectInput';
 const EditUser  = (props) => (
   <Form horizontal onSubmit={props.handleSubmit(props.onSubmit)}>
     <Field
+      name="email"
+      label="Email"
+      type="text"
+      component={BaseInput}
+      readOnly
+    />
+    <Field
       name="first_name"
       label="First Name"
       type="text"

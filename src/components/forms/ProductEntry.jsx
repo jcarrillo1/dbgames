@@ -2,6 +2,7 @@ import React from 'react';
 import { Field, reduxForm, FieldArray } from 'redux-form';
 import { Form, FormGroup, Col, Button } from 'react-bootstrap';
 import BaseInput from '../inputs/BaseInput';
+import TextAreaInput from '../inputs/TextAreaInput';
 import AddProducts from './AddProducts';
 
 
@@ -17,7 +18,7 @@ const ProductEntry  = (props) => (
       name="description"
       label="Description"
       type="text"
-      component={BaseInput}
+      component={TextAreaInput}
     />
     <Field
       name="release_date"

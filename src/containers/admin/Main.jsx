@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Spinner from 'react-spinkit';
 import { Table, Row } from 'react-bootstrap';
-import api from '../api';
-import UsersFilterForm from '../components/forms/UsersFilter';
-import UsersTableRow from '../components/admin/UsersTableRow';
+import api from '../../api';
+import UsersFilterForm from '../../components/forms/UsersFilter';
+import UsersTableRow from '../../components/admin/UsersTableRow';
 
 class DisplayUsersPage extends Component {
   state = {
@@ -23,7 +23,6 @@ class DisplayUsersPage extends Component {
       .catch(error => console.log(error));
   }
   onSubmit = (data) => {
-    console.log('FILTERING USERS', data);
     this.setState({ loading: true, users: [] })
     api.getUsers(data)
       .then(result => result.data)
@@ -40,29 +39,28 @@ class DisplayUsersPage extends Component {
     if (loading) {
       return <Spinner spinnerName="three-bounce" />;
     }
-    console.log(users);
     const UsersRows = users.map((user, index) => <UsersTableRow user={user} key={index} />)
     return (
       <div>
         <Row>
-      <UsersFilterForm onSubmit={this.onSubmit} />
-    </Row>
-    <br />
-      <Table responsive>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Role</th>
-          </tr>
-        </thead>
-        <tbody>
-          {UsersRows}
-        </tbody>
-      </Table>
-    </div>
+          <UsersFilterForm onSubmit={this.onSubmit} />
+        </Row>
+        <br />
+        <Table responsive>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            {UsersRows}
+          </tbody>
+        </Table>
+      </div>
     );
   }
 }

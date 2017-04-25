@@ -28,7 +28,7 @@ const AddProducts = ({
 
         <Field
           name={`${product}.platform_name`}
-          type="text"
+          type="textarea"
           component={BaseInput}
           label="Platform Name"
         />

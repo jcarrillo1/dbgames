@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import { Form, FormGroup, Col, Button } from 'react-bootstrap';
 import BaseInput from '../inputs/BaseInput';
 import FileInput from '../inputs/FileInput';
+import TextAreaInput from '../inputs/TextAreaInput';
 
 const EditProduct  = (props) => (
   <Form horizontal onSubmit={props.handleSubmit(props.onSubmit)}>
@@ -16,7 +17,7 @@ const EditProduct  = (props) => (
       name="description"
       label="Description"
       type="text"
-      component={BaseInput}
+      component={TextAreaInput}
     />
     <Field
       name="release_date"

@@ -2,10 +2,6 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { Form, FormGroup, Col, Button } from 'react-bootstrap';
 import BaseInput from '../inputs/BaseInput';
-import SelectInput from '../inputs/SelectInput'
-/**
- * title, genre, subgenre, max_price, min_price, platform_name, platform_abv
- */
 
 const GameFilter  = (props) => (
   <Form onSubmit={props.handleSubmit(props.onSubmit)}>

@@ -39,3 +39,99 @@ a {
   font-size: 22px;
   margin: auto;
 }
+
+.slick-next:before, .slick-prev:before {
+  font-size: 20px;
+  line-height: 1;
+  color: #00558B !important;
+  opacity: .75;
+}
+.slick-slide img {
+    display: inline-block;
+}
+.game-panels-container {
+  margin-bottom: 20px;
+}
+
+.panel-title {
+  font-size: 20px;
+}
+
+.game-panel-title {
+  padding: 0 0 5px 0;
+    margin-top: 18px;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: oblique;
+}
+
+.game-panel-details ul {
+  margin: 0 0 10px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.react-rater {
+  display: inline-block;
+}
+
+.react-rater a.is-active {
+    color: #fc6;
+}
+
+.react-rater a.will-be-active {
+    color: #fc6;
+}
+
+.react-rater a {
+    cursor: pointer;
+    color: #ccc;
+    position: relative;
+}
+
+.game-panel-details li {
+  margin: 0 7px 0 0;
+  padding: 0 7px 0 0;
+  display: inline-block;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+.game-panel-details-label {
+  color: #49494a;
+  padding-left: 0;
+  padding-right: 0;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.game-panel-image {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.game-panel-image img {
+  height: 50%;
+  width: 50%;
+}
+
+.game-panel-price {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.game-panel-cart-button {
+  display: block;
+}
+
+.game-panel-quantity {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.product-details {
+  margin-top: 20px;
+}

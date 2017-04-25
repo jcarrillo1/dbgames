@@ -1,9 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import classnames from 'classnames';
 
-const GameDisplayPanel = ({ game }) => (
-  <NavLink to={`/employee/games/${game.product_id}`} >
-    <div className="game-item col-sm-3">
+const GameDisplayPanel = ({ game, link, className }) => (
+  <NavLink to={`${link}${game.product_id}`} >
+    <div className={classnames('game-item', className)}>
       <img className="game-image" src={game.image} alt="" />
       <div className="game-title">
         {game.title}

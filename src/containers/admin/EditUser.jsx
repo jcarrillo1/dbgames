@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import Spinner from 'react-spinkit';
-import EditUserForm from '../components/forms/EditUser';
+import api from '../../api';
+import EditUserForm from '../../components/forms/EditUser';
 
 class EditUserPage extends Component {
   state = {
     loading: true,
+    submitting: false,
     user: {},
   }
   componentDidMount() {
-    axios.get(`http://localhost:8080/api/users/${this.props.match.params.id}`)
+    api.getUser(this.props.match.params.id)
       .then(result => result.data)
       .then(data => {
         const { user } = data;
@@ -21,9 +22,13 @@ class EditUserPage extends Component {
       .catch(error => console.log(error));
   }
   onSubmit = (data) => {
-    axios.patch(`http://localhost:8080/api/users/${this.props.match.params.id}`, data)
+    this.setState({ submitting: true });
+    api.editUser(this.props.match.params.id, data)
       .then(result => result.data)
-      .then(data => console.log(data))
+      .then(data => {
+        this.setState({ submitting: false });
+        this.props.history.push('/admin');
+      })
       .catch(error => console.log(error));
   }
   render() {

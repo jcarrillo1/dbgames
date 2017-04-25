@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import SignUp from '../components/forms/SignUp';
-import { signup } from '../redux/auth';
+import SignUp from '../../components/forms/SignUp';
+import { signup } from '../../redux/auth';
 
 class DefaultSignUp extends Component {
   onSubmit = (data) => {

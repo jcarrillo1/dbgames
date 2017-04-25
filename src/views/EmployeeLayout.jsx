@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import AddProductPage from '../containers/AddProductPage';
-import DisplayProductsPage from '../containers/DisplayProductsPage';
-import EditProductPage from '../containers/EditProductPage';
+import Main from '../containers/employee/Main';
+import AddProduct from '../containers/employee/AddProduct';
+import EditProduct from '../containers/employee/EditProduct';
 import EmployeeHeader from '../components/headers/EmployeeHeader';
 import Mismatch from '../components/common/Mismatch';
 
@@ -11,9 +11,9 @@ const EmployeeLayout = ({ match }) => (
     <EmployeeHeader />
     <div className="container">
       <Switch>
-        <Route path={`${match.url}/games/add`} component={AddProductPage} />
-        <Route path={`${match.url}/games/:id`} component={EditProductPage} />
-        <Route exact path={`${match.url}`} component={DisplayProductsPage} />
+        <Route path={`${match.url}/games/add`} component={AddProduct} />
+        <Route path={`${match.url}/games/:id`} component={EditProduct} />
+        <Route exact path={`${match.url}`} component={Main} />
         <Route component={Mismatch} />
       </Switch>
     </div>

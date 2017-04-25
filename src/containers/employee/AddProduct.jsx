@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Col } from 'react-bootstrap';
-import api from '../api';
-import { blobToImage } from '../utilities';
-import ProductEntry from '../components/forms/ProductEntry';
+import api from '../../api';
+import { blobToImage } from '../../utilities';
+import ProductEntry from '../../components/forms/ProductEntry';
 
 class AddProductPage extends Component {
   state={
@@ -10,7 +10,7 @@ class AddProductPage extends Component {
   }
   onSubmit = async (values) => {
     try {
-      console.log(values);
+      const { history } = this.props;
       this.setState({ submitting: true })
       const { products } = values;
       if (products && products.length) {
@@ -20,13 +20,9 @@ class AddProductPage extends Component {
           product.image = result.secure_url;
         }
       }
-      api.addProducts(values)
-        .then(result => result.data)
-        .then((data) => {
-          console.log(data);
-          this.setState({ submitting: false });
-          this.props.history.push('/employee/');
-        })
+      await api.addProducts(values)
+      this.setState({ submitting: false });
+      history.push('/employee/');
     } catch (error) {
       console.log("ERROR", error);
     }

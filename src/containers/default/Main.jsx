@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import Spinner from 'react-spinkit';
 import { Row } from 'react-bootstrap';
-import api from '../api';
-import GameDisplayPanel from '../components/admin/GameDisplayPanel';
-import GameFilterForm from '../components/forms/GameFilter';
+import api from '../../api';
+import GameFilterForm from '../../components/forms/GameFilter';
+import GameDisplayPanel from '../../components/common/GameDisplayPanel';
+import GameCarousel from '../../components/common/GameCarousel';
 
-class DisplayProductsPage extends Component {
+class Main extends Component {
   state = {
     loading: true,
     games: [],
@@ -45,7 +45,10 @@ class DisplayProductsPage extends Component {
     if (loading) {
       return <Spinner spinnerName="three-bounce" />;
     }
-    const GamePanels = games.map((game, index) => <GameDisplayPanel game={game} key={index} />)
+    const GamePanels = games.map((game, index) =>
+      <GameDisplayPanel className="col-xs-3"
+        game={game} key={index} link='/product/' />
+    )
     return (
       <div>
         <Row>
@@ -60,4 +63,4 @@ class DisplayProductsPage extends Component {
   }
 }
 
-export default DisplayProductsPage;
+export default Main;
