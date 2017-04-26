@@ -50,6 +50,10 @@ class Product extends Component {
                   <span className="game-panel-details-label">Release Date: </span>
                   <span className="game-panel-details-value">{product.release_date}</span>
                 </li>
+                <li>
+                  <span className="game-panel-details-label">Platform: </span>
+                  <span className="game-panel-details-value">{product.name}</span>
+                </li>
                 {/* <li>
                   <span className="game-panel-details-label">Rating: </span>
                   <span className="game-panel-details-value"><Rating value={4} size={20}/></span>

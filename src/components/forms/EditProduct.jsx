@@ -56,12 +56,6 @@ const EditProduct  = (props) => (
       component={BaseInput}
     />
     <Field
-      name="subgenre"
-      label="Subgenre"
-      type="text"
-      component={BaseInput}
-    />
-    <Field
       name="name"
       label="Platform"
       type="text"
@@ -98,5 +92,4 @@ const EditProduct  = (props) => (
 
 export default reduxForm({
   form: 'editProduct',
-  validate,
 })(EditProduct);
